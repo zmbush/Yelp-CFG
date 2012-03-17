@@ -29,7 +29,8 @@ for review in data:
 commonWords = {}
 for word in words:
   if words[word][0] > 10:
-    commonWords[word] = words[word]
+    if words[word][1] < 2.25 or words[word][1] > 3.75:
+      commonWords[word] = words[word]
 
 trained = open('trained.json', 'w')
 trained.write(json.dumps(commonWords))
