@@ -1,6 +1,7 @@
 import json
 
-data = 'yelp_academic_dataset.json'
+#data = 'yelp_academic_dataset.json'
+data = 'tmplIDXQt'
 
 dataset = open(data)
 
