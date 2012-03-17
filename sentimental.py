@@ -18,5 +18,5 @@ for t in types:
   fname = t + '.json'
   handle = open(fname, 'w')
   for line in types[t]:
-    handle.write(json.dumps(line))
+    handle.write(json.dumps(line) + '\n')
   handle.close()
