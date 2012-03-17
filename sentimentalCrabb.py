@@ -39,6 +39,17 @@ def zachStuff():
 
       contents = obj['text']
       stars = float(obj['stars'])
+
+      userid = obj['user_id']
+      useravg = float(users[userid])
+      
+      diff = stars - useravg #higher than average = +
+      diff /= 5
+
+      wc = 0
+      for word in contents.split():
+        wc += 1
+      weight = 1/wc
       for word in contents.split():
         sanitized = ''.join(e for e in word if e.isalnum()).lower()
         if len(sanitized) > 3 and len(sanitized) < 15:  
@@ -47,10 +58,24 @@ def zachStuff():
           else:
             count,s = words[sanitized]
 
-            times = s*count + stars
+            nbs = s*count + diff/wc
+            nw = s + count
+            ns = nbw
+            words[sanatized] = (nw, ns)
+
+            #times = s*count + stars
 
             count += 1
             words[sanitized] = (count, times / count)
+
+
+
+      for word in words:
+          w = 1 / wc
+          c,s = words[word]
+          newScore = s * c + diff/wc
+          newweight = s + c
+          words[word] = (c,s)
 
     commonWords = {}
     for word in words:
@@ -62,6 +87,6 @@ def zachStuff():
 
 
 if __name__ == "__main__":
-    zachStuff()
     getUsers(open(userfile))
     getBusis(open(busifile))
+    zachStuff()
