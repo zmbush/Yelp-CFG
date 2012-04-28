@@ -25,7 +25,7 @@ for t in test:
   dataPoints = 0
   if obj['business_id'] in businesses:
     guessStars = businesses[obj['business_id']][0]
-    dataPoints = businesses[obj['business_id']][1]*100
+    dataPoints = businesses[obj['business_id']][1]*1000
   else:
     guessStars = 3.0
     dataPoints = 100
